@@ -364,3 +364,37 @@ Remove one or more members from a sorted set.
 """
 zrem(key, member, members...; client=get_global_client()) = execute(["ZREM", key, member, members...], client)
 
+"""
+    sadd(key, value;client=get_global_client())
+    
+Add a memeber to sorted set
+"""
+sadd(key, value;client=get_global_client()) = execute(["SADD", key, value], client)
+
+"""
+    sadd(key, value;client=get_global_client())
+    
+Add multiple members to sorted set
+"""
+sadd(key, value::Union{Vector, Set};client=get_global_client()) = execute(["SADD", key, value...], client)
+
+"""
+    smembers(key;client=get_global_client())    
+
+Return all members of the sorted set
+"""
+smembers(key;client=get_global_client()) = execute(["SMEMBERS", key], client)
+
+"""
+    srem(key_val, value;client=get_global_client())
+
+Remove a member from a sorted set
+"""
+srem(key, value;client=get_global_client()) = execute(["SREM", key, value], client)
+
+"""
+    sismember(key, value;client=get_global_client())
+
+Check a member exists in a sorted set
+"""
+sismember(key, value;client=get_global_client()) = execute(["SISMEMBER", key, value], client)
